@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Эскиз Б — бенто</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500&family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../vs.css">
+    <style>
+        html, body { margin: 0; background: #0B0B0B; }
+        /* .services-offer-grid / .service-offer-card / .service-offer-cta */
+        .b-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid #373737; border-radius: 14px; overflow: hidden; }
+        .b-cell { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; min-height: 290px; padding: 24px; background: #1F1F1F; }
+        .b-cell:nth-child(2), .b-cell:nth-child(5) { border-left: 1px solid #373737; border-right: 1px solid #373737; }
+        .b-cell:nth-child(n+4) { border-top: 1px solid #373737; }
+        .b-ico { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 14px; border: .8px solid rgba(243,254,0,.2); background: rgba(243,254,0,.1); }
+        .b-ico svg { width: 20px; height: 20px; fill: none; stroke: #F3FE00; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+        .b-title { font-family: Inter, sans-serif; font-size: 16px; line-height: 24px; font-weight: 600; color: #fff; margin-bottom: 12px; }
+        .b-side { font-family: Inter, sans-serif; font-size: 14px; line-height: 21px; color: #797A71; }
+        .b-side + .b-side { margin-top: 8px; color: #D4D4D8; }
+        .b-side b { font-weight: 500; color: inherit; }
+        .b-cell .zvs-num { font-size: 40px; line-height: 44px; }
+        .b-cell .zvs-num em { font-size: 30px; }
+        .b-cta { background: #fff; }
+        .b-cta .zvs-num { color: #27272A; font-size: 48px; line-height: 60px; }
+        .b-cta .zvs-num em { color: #27272A; font-size: 36px; }
+        .b-cta .b-title { color: #27272A; }
+        .b-cta .b-side { color: #52525B; }
+        .b-ico.cta { background: #000; }
+    </style>
+</head>
+<body>
+<section class="zvs">
+    <div class="zvs-container">
+        <header class="zvs-head">
+            <div>
+                <p class="zvs-eyebrow">Площадка или сайт</p>
+                <h2 class="zvs-title">Чем сайт отличается от площадок?</h2>
+            </div>
+            <p class="zvs-desc">Бросать справочники не нужно: пусть приводят людей и дальше. Сайт нужен, чтобы клиент, которого они привели, остался вашим.</p>
+        </header>
+
+        <ul class="b-grid">
+            <li class="b-cell">
+                <p class="zvs-num">3–30<em>тыс.&nbsp;₽</em></p>
+                <div>
+                    <h3 class="b-title">Место в поиске</h3>
+                    <p class="b-side"><b>Площадка:</b> столько стоит место повыше в картах — в месяц. Перестали платить — карточка уходит вниз.</p>
+                    <p class="b-side"><b>Сайт:</b> адрес ваш, пока работает клиника. Домен и хостинг — несколько тысяч ₽ в год.</p>
+                </div>
+            </li>
+            <li class="b-cell">
+                <p class="zvs-num">3,7<em>%</em></p>
+                <div>
+                    <h3 class="b-title">Комиссия с записи</h3>
+                    <p class="b-side"><b>Площадка:</b> портал берёт с каждой записи, даже с повторной.</p>
+                    <p class="b-side"><b>Сайт:</b> 0 ₽ с первой, сотой и повторной заявки.</p>
+                </div>
+            </li>
+            <li class="b-cell">
+                <span class="b-ico"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
+                <div>
+                    <h3 class="b-title">Контакты клиента</h3>
+                    <p class="b-side"><b>Площадка:</b> номер у неё — позвать на осмотр через полгода не выйдет.</p>
+                    <p class="b-side"><b>Сайт:</b> номер у вас — напомните об осмотре, и клиент вернётся к вам.</p>
+                </div>
+            </li>
+            <li class="b-cell">
+                <span class="b-ico"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></span>
+                <div>
+                    <h3 class="b-title">Кто рядом</h3>
+                    <p class="b-side"><b>Площадка:</b> другие клиники — прямо в вашей карточке.</p>
+                    <p class="b-side"><b>Сайт:</b> только вы. Выбирают между вашими врачами.</p>
+                </div>
+            </li>
+            <li class="b-cell">
+                <span class="b-ico"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M5 7l-3 7a4 4 0 0 0 6 0zM19 7l-3 7a4 4 0 0 0 6 0zM8 21h8"/></svg></span>
+                <div>
+                    <h3 class="b-title">Кто пишет правила</h3>
+                    <p class="b-side"><b>Площадка:</b> отзывы и порядок решает её алгоритм.</p>
+                    <p class="b-side"><b>Сайт:</b> врачи, цены, отзывы, акции — решаете вы.</p>
+                </div>
+            </li>
+            <li class="b-cell b-cta">
+                <p class="zvs-num">0<em>₽</em></p>
+                <div>
+                    <h3 class="b-title">Столько стоит запись с вашего сайта</h3>
+                    <p class="b-side">Тарифы — из открытых прайсов площадок, сентябрь 2026.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+</body>
+</html>

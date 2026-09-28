@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Эскиз В — переключатель</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500&family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../vs.css">
+    <style>
+        html, body { margin: 0; background: #0B0B0B; }
+        /* .tools-layout: .tools-sidebar + content area */
+        .c-layout { display: flex; gap: 24px; align-items: stretch; }
+        .c-side { flex: none; width: 300px; padding: 12px; border-radius: 14px; background: #18181B; display: flex; flex-direction: column; gap: 4px; }
+        .c-tab { all: unset; box-sizing: border-box; position: relative; display: block; width: 100%; padding: 12px 16px; border-radius: 6px; font: 500 14px/20px Inter, sans-serif; color: #fff; cursor: pointer; }
+        .c-tab small { display: block; font-weight: 400; color: #797A71; margin-top: 2px; }
+        .c-tab[aria-selected="true"] { background: rgba(243,254,0,.12); color: #F3FE00; }
+        .c-tab[aria-selected="true"]::before { content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; border-radius: 2px; background: #F3FE00; }
+        .c-panel { flex: 1; display: grid; grid-template-columns: 340px 1fr; border-radius: 14px; overflow: hidden; background: #fff; }
+        .c-stat { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; padding: 32px; background: #0B0B09; border: .6px solid #2A2A27; border-radius: 14px 0 0 14px; }
+        .c-stat::before { content: ""; position: absolute; left: 50%; bottom: -330px; width: 500px; height: 500px; margin-left: -250px; border-radius: 50%; background: radial-gradient(circle, rgba(243,254,0,.75) 0%, rgba(243,254,0,.35) 20%, rgba(243,254,0,.15) 45%, rgba(243,254,0,.05) 70%, transparent 100%); filter: blur(50px); }
+        .c-stat > * { position: relative; }
+        .c-list { padding: 32px; }
+        .c-list h3 { font: 500 26px/34px "Inter Tight", sans-serif; letter-spacing: -.52px; color: #27272A; margin-bottom: 20px; }
+        .c-list li { display: flex; gap: 8px; padding: 14px 0; border-top: 1px solid #E4E4E7; font: 400 14px/20px Inter, sans-serif; color: #52525B; }
+        .c-list li::before { content: "✦"; color: #1B1B18; }
+        .c-list li b { display: block; font-weight: 600; color: #1B1B18; margin-bottom: 2px; }
+        .c-foot { margin-top: 16px; font: 400 14px/20px Inter, sans-serif; color: #797A71; }
+    </style>
+</head>
+<body>
+<section class="zvs">
+    <div class="zvs-container">
+        <header class="zvs-head">
+            <div>
+                <p class="zvs-eyebrow">Площадка или сайт</p>
+                <h2 class="zvs-title">Чем сайт отличается от площадок?</h2>
+            </div>
+            <p class="zvs-desc">Бросать справочники не нужно: пусть приводят людей и дальше. Сайт нужен, чтобы клиент, которого они привели, остался вашим.</p>
+        </header>
+
+        <div class="c-layout">
+            <div class="c-side" role="tablist" aria-orientation="vertical">
+                <button class="c-tab" role="tab" aria-selected="false">Площадка<small>Вы снимаете место</small></button>
+                <button class="c-tab" role="tab" aria-selected="true">Свой сайт<small>Вы владеете адресом</small></button>
+            </div>
+            <div class="c-panel" role="tabpanel">
+                <div class="c-stat">
+                    <div>
+                        <p class="zvs-num">0<em>₽</em></p>
+                        <p class="zvs-num-label">стоит запись с вашего сайта</p>
+                    </div>
+                    <p class="zvs-num-label" style="color:#797A71">На площадке — 3,7% с записи и 3–30 тыс. ₽ в месяц за место повыше.</p>
+                </div>
+                <div class="c-list">
+                    <h3>Вы владеете адресом</h3>
+                    <ul>
+                        <li><span><b>Адрес ваш, пока работает клиника</b>Домен и хостинг — несколько тысяч ₽ в год.</span></li>
+                        <li><span><b>Запись без комиссии</b>0 ₽ с первой, сотой и повторной заявки.</span></li>
+                        <li><span><b>Клиент возвращается к вам</b>Его номер остаётся у вас — напомните об осмотре или акции.</span></li>
+                        <li><span><b>На странице — только вы</b>Ни чужих клиник, ни чужой рекламы.</span></li>
+                        <li><span><b>Правила пишете вы</b>Врачи, цены, отзывы, акции — решаете сами.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <p class="c-foot">Тарифы — из открытых прайсов площадок, сентябрь 2026.</p>
+    </div>
+</section>
+</body>
+</html>

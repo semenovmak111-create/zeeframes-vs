@@ -1,0 +1,407 @@
+/* ZeeFrames — "Platform vs your own site" comparison
+   Namespaced with .zvs-* so it can be dropped into any page of zeeframes.com.
+   Built from the site's own parts:
+   - section header of the service pages (.tool-section-header: lime eyebrow,
+     .agency-section-title, muted paragraph on the right);
+   - stat cards of the /about hero (.about-card-common, .hero-counter with the
+     lime "+" in weight 300, the lime glow of the "10+" card);
+   - numbered rows of "Six reasons why 90% of our clients come back" on /about
+     (.value-item: 01 / title / muted text, 0.6 px hairlines, lime on hover);
+   - uppercase card label of "Three types of work" (.work-type-card__label).
+   Default is the dark section; add .zvs--light for the cream one. */
+
+.zvs {
+    --zvs-primary: var(--color-primary, #F3FE00);
+    --zvs-bg: var(--color-black-300, #0B0B0B);
+    --zvs-card: var(--color-black-300, #0B0B0B);
+    --zvs-line: var(--color-base-border, #2A2A27);
+    --zvs-ink: var(--color-white, #FFFFFF);
+    --zvs-ink-2: var(--color-gray-165, #D4D4D8);
+    --zvs-muted: var(--color-base-muted, #797A71);
+    --zvs-eyebrow: var(--color-primary, #F3FE00);
+    --zvs-sign: var(--color-primary, #F3FE00);
+    --zvs-hover-ink: var(--color-black-300, #0B0B0B);
+    --zvs-hover-ink-2: #0E0E00;
+    --zvs-chip-bg: var(--color-base-primary-fg, #282601);
+    --zvs-chip-ink: var(--color-primary, #F3FE00);
+    --zvs-focus: var(--color-primary, #F3FE00);
+    --zvs-glow: radial-gradient(circle,
+        rgba(243, 254, 0, .75) 0%, rgba(243, 254, 0, .35) 20%,
+        rgba(243, 254, 0, .15) 45%, rgba(243, 254, 0, .05) 70%, transparent 100%);
+
+    position: relative;
+    padding: 60px 0;
+    background-color: var(--zvs-bg);
+    color: var(--zvs-ink);
+    font-family: "Inter Tight", sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* cream section, as Process / Use Cases on the service pages */
+.zvs--light {
+    --zvs-bg: var(--color-cream-white, #FAF9F4);
+    --zvs-card: var(--color-white, #FFFFFF);
+    --zvs-line: var(--color-gray-410, #CDCDCD);
+    --zvs-ink: var(--color-gray-800, #27272A);
+    --zvs-ink-2: var(--color-gray-650, #52525B);
+    --zvs-muted: var(--color-base-muted, #797A71);
+    --zvs-eyebrow: var(--color-gray-900, #18181B);
+    --zvs-sign: var(--color-gray-900, #18181B);
+    --zvs-chip-bg: var(--color-gray-900, #18181B);
+    --zvs-chip-ink: var(--color-white, #FFFFFF);
+    --zvs-focus: var(--color-gray-900, #18181B);
+}
+
+.zvs *,
+.zvs *::before,
+.zvs *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.zvs ul,
+.zvs ol {
+    list-style: none;
+}
+
+.zvs :focus-visible {
+    outline: 2px solid var(--zvs-focus);
+    outline-offset: 2px;
+}
+
+.zvs-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--zvs-gutter, 60px);
+}
+
+/* ── Section header: .tool-section-header of the service pages ── */
+
+.zvs-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    padding-bottom: 48px;
+}
+
+.zvs-eyebrow {
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: var(--zvs-eyebrow);
+}
+
+.zvs-title {
+    max-width: 446px;
+    margin-top: 16px;
+    font-size: 36px;
+    line-height: 44px;
+    font-weight: 500;
+    letter-spacing: -0.72px;
+    color: var(--zvs-ink);
+}
+
+.zvs-desc {
+    max-width: 630px;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--zvs-ink-2);
+}
+
+/* ── Stats: the cards of the /about hero ── */
+
+.zvs-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 48px;
+}
+
+.zvs-stat {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    min-height: 226px;
+    padding: 24px;
+    border: 0.6px solid var(--zvs-line);
+    border-radius: 8px;
+    background: var(--zvs-card);
+    overflow: hidden;
+}
+
+/* the glow of the "10+ Years" card, from the lower middle */
+.zvs-stat--hero::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -300px;
+    width: 560px;
+    height: 560px;
+    margin-left: -280px;
+    border-radius: 50%;
+    background: var(--zvs-glow);
+    filter: blur(50px);
+    pointer-events: none;
+}
+
+.zvs-stat > * {
+    position: relative;
+}
+
+/* .hero-counter + .text_primary.fs_36.fw_300 */
+.zvs-num {
+    display: flex;
+    align-items: baseline;
+    font-family: Geologica, "Inter Tight", sans-serif;
+    font-size: 48px;
+    line-height: 60px;
+    font-weight: 500;
+    color: var(--zvs-ink);
+    white-space: nowrap;
+}
+
+.zvs-num em {
+    margin-left: 4px;
+    font-style: normal;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--zvs-sign);
+}
+
+.zvs-num-label {
+    max-width: 240px;
+    margin-top: 12px;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--zvs-ink);
+}
+
+/* DELIVERY / SUCCESS under the numbers; the hero one is the dark chip of EXPERIENCE */
+.zvs-tag {
+    align-self: flex-start;
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    color: var(--zvs-ink);
+}
+
+.zvs-stat--hero .zvs-tag {
+    padding: 4px 12px;
+    border-radius: 4px;
+    background: var(--zvs-chip-bg);
+    color: var(--zvs-chip-ink);
+}
+
+/* ── Rows: .value-item of "Six reasons" ── */
+
+.zvs-cols,
+.zvs-row {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 240px) minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 40px;
+    padding: 0 24px;
+}
+
+.zvs-cols {
+    padding-bottom: 20px;
+}
+
+.zvs-cols > span:first-child {
+    grid-column: 3;
+}
+
+.zvs-col-label {
+    display: block;
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    color: var(--zvs-muted);
+}
+
+.zvs-col-title {
+    display: block;
+    margin-top: 6px;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 500;
+    color: var(--zvs-muted);
+}
+
+.zvs-cols .is-own .zvs-col-label { color: var(--zvs-eyebrow); }
+.zvs-cols .is-own .zvs-col-title { color: var(--zvs-ink); }
+
+.zvs-row {
+    align-items: center;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    border-top: 0.6px solid var(--zvs-line);
+}
+
+.zvs-row:last-child {
+    border-bottom: 0.6px solid var(--zvs-line);
+}
+
+.zvs-row:hover {
+    background-color: var(--zvs-primary);
+}
+
+.zvs-n {
+    font-family: Inter, sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--zvs-muted);
+}
+
+.zvs-topic {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 500;
+    color: var(--zvs-ink);
+}
+
+.zvs-pair {
+    display: contents;
+}
+
+/* the side names are read by screen readers; on phones they are shown */
+.zvs-pair dt {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.zvs-pair dd {
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--zvs-muted);
+}
+
+.zvs-nw {
+    white-space: nowrap;
+}
+
+.zvs-pair dd.is-own {
+    color: var(--zvs-ink);
+}
+
+.zvs-row:hover .zvs-n,
+.zvs-row:hover .zvs-pair dd { color: var(--zvs-hover-ink-2); }
+.zvs-row:hover .zvs-topic,
+.zvs-row:hover .zvs-pair dd.is-own { color: var(--zvs-hover-ink); }
+
+.zvs-note {
+    margin-top: 24px;
+    padding: 0 24px;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--zvs-muted);
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+
+@media (max-width: 1200px) {
+    .zvs-cols,
+    .zvs-row {
+        grid-template-columns: 40px minmax(0, 200px) minmax(0, 1fr) minmax(0, 1fr);
+        column-gap: 32px;
+    }
+}
+
+@media (max-width: 991px) {
+    .zvs { --zvs-gutter: 40px; }
+
+    .zvs-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .zvs-title,
+    .zvs-desc { max-width: 100%; }
+
+    .zvs-stat { min-height: 200px; padding: 20px; }
+    .zvs-num { font-size: 40px; line-height: 48px; }
+    .zvs-num em { font-size: 30px; }
+
+    /* one row = number and topic on top, the pair side by side under them */
+    .zvs-cols { display: none; }
+
+    .zvs-row {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        column-gap: 24px;
+        row-gap: 16px;
+        align-items: start;
+        padding: 24px 16px;
+    }
+
+    .zvs-n,
+    .zvs-topic { grid-column: 1 / -1; }
+    .zvs-n { margin-bottom: -12px; font-size: 14px; line-height: 20px; }
+
+    .zvs-pair dt {
+        position: static;
+        width: auto;
+        height: auto;
+        overflow: visible;
+        clip: auto;
+        margin-bottom: 6px;
+        font-family: Inter, sans-serif;
+        font-size: 12px;
+        line-height: 18px;
+        letter-spacing: 0.48px;
+        text-transform: uppercase;
+        color: var(--zvs-muted);
+    }
+
+    .zvs-pair dt.is-own { color: var(--zvs-eyebrow); }
+    .zvs-pair > div { min-width: 0; }
+    .zvs-row:hover .zvs-pair dt { color: var(--zvs-hover-ink-2); }
+
+    .zvs-note { padding: 0 16px; }
+}
+
+@media (max-width: 767px) {
+    .zvs-stats { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .zvs-stat { min-height: 0; gap: 32px; }
+    .zvs-stat--hero { min-height: 220px; }
+}
+
+@media (max-width: 575px) {
+    .zvs { --zvs-gutter: 24px; padding: 24px 0; }
+
+    .zvs-head { padding-bottom: 24px; }
+
+    .zvs-title {
+        margin-top: 8px;
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .zvs-desc { font-size: 14px; line-height: 20px; }
+    .zvs-stats { margin-bottom: 32px; }
+
+    .zvs-row {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 12px;
+        padding: 24px 16px;
+    }
+
+    .zvs-pair dd { font-size: 14px; line-height: 20px; }
+}
