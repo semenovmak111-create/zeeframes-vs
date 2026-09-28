@@ -5,8 +5,10 @@
      .agency-section-title, muted paragraph on the right);
    - stat cards of the /about hero (.about-card-common, .hero-counter with the
      lime "+" in weight 300, the lime glow of the "10+" card);
-   - numbered rows of "Six reasons why 90% of our clients come back" on /about
-     (.value-item: 01 / title / muted text, 0.6 px hairlines, lime on hover);
+   - the "What's included" bento of the service pages (.services-offer-grid):
+     a dark cell (.service-offer-card, lime glow on hover) next to the white
+     CTA cell (.service-offer-cta, lime on hover), 44 px icon boxes (.card-icon);
+   - the minus / plus icons and hairline rows of the FAQ (.faq-item);
    - uppercase card label of "Three types of work" (.work-type-card__label).
    Default is the dark section; add .zvs--light for the cream one. */
 
@@ -20,14 +22,32 @@
     --zvs-muted: var(--color-base-muted, #797A71);
     --zvs-eyebrow: var(--color-primary, #F3FE00);
     --zvs-sign: var(--color-primary, #F3FE00);
-    --zvs-hover-ink: var(--color-black-300, #0B0B0B);
-    --zvs-hover-ink-2: #0E0E00;
     --zvs-chip-bg: var(--color-base-primary-fg, #282601);
     --zvs-chip-ink: var(--color-primary, #F3FE00);
     --zvs-focus: var(--color-primary, #F3FE00);
     --zvs-glow: radial-gradient(circle,
         rgba(243, 254, 0, .75) 0%, rgba(243, 254, 0, .35) 20%,
         rgba(243, 254, 0, .15) 45%, rgba(243, 254, 0, .05) 70%, transparent 100%);
+
+    /* the bento: platform = dark cell, own site = white CTA cell */
+    --zvs-grid-line: var(--color-gray-muted, #373737);
+    --zvs-them-bg: var(--color-black-210, #1F1F1F);
+    --zvs-them-ink: var(--color-white, #FFFFFF);
+    --zvs-them-text: var(--color-base-muted, #797A71);
+    --zvs-them-row: rgba(255, 255, 255, .08);
+    --zvs-them-mark: var(--color-base-muted, #797A71);
+    --zvs-them-icon-bg: rgba(243, 254, 0, .10);
+    --zvs-them-icon-line: rgba(243, 254, 0, .20);
+    --zvs-them-icon: var(--color-primary, #F3FE00);
+    --zvs-own-bg: var(--color-white, #FFFFFF);
+    --zvs-own-hover: var(--color-primary, #F3FE00);
+    --zvs-own-ink: var(--color-gray-800, #27272A);
+    --zvs-own-text: var(--color-gray-650, #52525B);
+    --zvs-own-row: var(--color-gray-250, #E4E4E7);
+    --zvs-own-mark: var(--color-gray-800, #27272A);
+    --zvs-own-icon-bg: var(--color-black, #000000);
+    --zvs-own-icon-line: rgba(243, 254, 0, .20);
+    --zvs-own-icon: var(--color-white, #FFFFFF);
 
     position: relative;
     padding: 60px 0;
@@ -38,19 +58,38 @@
     -webkit-font-smoothing: antialiased;
 }
 
-/* cream section, as Process / Use Cases on the service pages */
+/* cream section, as Process on the service pages: the platform is a white
+   cell, your site the black CTA cell ("Want your MVP designed fast?") */
 .zvs--light {
     --zvs-bg: var(--color-cream-white, #FAF9F4);
     --zvs-card: var(--color-white, #FFFFFF);
     --zvs-line: var(--color-gray-410, #CDCDCD);
     --zvs-ink: var(--color-gray-800, #27272A);
     --zvs-ink-2: var(--color-gray-650, #52525B);
-    --zvs-muted: var(--color-base-muted, #797A71);
     --zvs-eyebrow: var(--color-gray-900, #18181B);
     --zvs-sign: var(--color-gray-900, #18181B);
     --zvs-chip-bg: var(--color-gray-900, #18181B);
     --zvs-chip-ink: var(--color-white, #FFFFFF);
     --zvs-focus: var(--color-gray-900, #18181B);
+
+    --zvs-grid-line: var(--color-gray-410, #CDCDCD);
+    --zvs-them-bg: var(--color-white, #FFFFFF);
+    --zvs-them-ink: var(--color-gray-800, #27272A);
+    --zvs-them-text: var(--color-base-muted, #797A71);
+    --zvs-them-row: var(--color-gray-250, #E4E4E7);
+    --zvs-them-mark: var(--color-base-muted, #797A71);
+    --zvs-them-icon-bg: var(--color-cream-white, #FAF9F4);
+    --zvs-them-icon-line: #E7E7E4;
+    --zvs-them-icon: var(--color-gray-800, #27272A);
+    --zvs-own-bg: var(--color-black-300, #0B0B0B);
+    --zvs-own-hover: var(--color-black-300, #0B0B0B);
+    --zvs-own-ink: var(--color-white, #FFFFFF);
+    --zvs-own-text: var(--color-gray-165, #D4D4D8);
+    --zvs-own-row: rgba(255, 255, 255, .12);
+    --zvs-own-mark: var(--color-primary, #F3FE00);
+    --zvs-own-icon-bg: rgba(243, 254, 0, .10);
+    --zvs-own-icon-line: rgba(243, 254, 0, .20);
+    --zvs-own-icon: var(--color-primary, #F3FE00);
 }
 
 .zvs *,
@@ -119,7 +158,7 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
-    margin-bottom: 48px;
+    margin-bottom: 12px;
 }
 
 .zvs-stat {
@@ -202,112 +241,170 @@
     color: var(--zvs-chip-ink);
 }
 
-/* ── Rows: .value-item of "Six reasons" ── */
+/* ── Two lists: the bento of "What's included" ──
+   Both lists share the row tracks (subgrid), so point N of the platform
+   stands level with point N of the site. */
 
-.zvs-cols,
-.zvs-row {
+.zvs-board {
     display: grid;
-    grid-template-columns: 56px minmax(0, 240px) minmax(0, 1fr) minmax(0, 1fr);
-    column-gap: 40px;
-    padding: 0 24px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto repeat(5, auto);
+    border: 1px solid var(--zvs-grid-line);
+    border-radius: 14px;
+    overflow: hidden;
 }
 
-.zvs-cols {
-    padding-bottom: 20px;
+.zvs-side {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-row: 1 / span 6;
+    grid-template-rows: subgrid;
+    padding: 32px;
+    background: var(--zvs-them-bg);
+    color: var(--zvs-them-ink);
 }
 
-.zvs-cols > span:first-child {
-    grid-column: 3;
+.zvs-side--own {
+    border-left: 1px solid var(--zvs-grid-line);
+    background: var(--zvs-own-bg);
+    color: var(--zvs-own-ink);
 }
 
-.zvs-col-label {
-    display: block;
+/* hover: the dark cell lights up from the corner, the white one turns lime —
+   both exactly as in the service bento */
+.zvs-side--them::before {
+    content: "";
+    position: absolute;
+    top: -300px;
+    left: -250px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: var(--zvs-glow);
+    filter: blur(50px);
+    opacity: 0;
+    transition: opacity .3s ease;
+    pointer-events: none;
+}
+
+.zvs-side--them:hover::before { opacity: 1; }
+.zvs-side--own:hover { background: var(--zvs-own-hover); }
+.zvs-side > * { position: relative; }
+
+.zvs-side-head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 24px;
+}
+
+/* .card-icon.primary-icon / .card-icon.cta-card-icon */
+.zvs-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 40px;
+    border-radius: 14px;
+    border: 0.8px solid var(--zvs-them-icon-line);
+    background: var(--zvs-them-icon-bg);
+    color: var(--zvs-them-icon);
+}
+
+.zvs-side--own .zvs-icon {
+    border-color: var(--zvs-own-icon-line);
+    background: var(--zvs-own-icon-bg);
+    color: var(--zvs-own-icon);
+}
+
+.zvs-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.zvs-label {
     font-family: Inter, sans-serif;
     font-size: 12px;
     line-height: 18px;
     letter-spacing: 0.48px;
     text-transform: uppercase;
-    color: var(--zvs-muted);
+    color: var(--zvs-them-text);
 }
 
-.zvs-col-title {
-    display: block;
-    margin-top: 6px;
-    font-size: 18px;
-    line-height: 28px;
-    font-weight: 500;
-    color: var(--zvs-muted);
+.zvs-side--own .zvs-label { color: var(--zvs-own-text); }
+
+/* the h3 of .service-offer-cta */
+.zvs-side-title {
+    margin-top: 8px;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 600;
+    color: inherit;
 }
 
-.zvs-cols .is-own .zvs-col-label { color: var(--zvs-eyebrow); }
-.zvs-cols .is-own .zvs-col-title { color: var(--zvs-ink); }
-
-.zvs-row {
-    align-items: center;
-    padding-top: 28px;
-    padding-bottom: 28px;
-    border-top: 0.6px solid var(--zvs-line);
+.zvs-list {
+    display: grid;
+    grid-row: 2 / span 5;
+    grid-template-rows: subgrid;
 }
 
-.zvs-row:last-child {
-    border-bottom: 0.6px solid var(--zvs-line);
+/* one line of the FAQ: hairline on top, the site's 16 px minus / plus */
+.zvs-item {
+    display: grid;
+    grid-template-columns: 16px minmax(0, 1fr);
+    column-gap: 16px;
+    padding: 20px 0;
+    border-top: 1px solid var(--zvs-them-row);
 }
 
-.zvs-row:hover {
-    background-color: var(--zvs-primary);
+.zvs-side--own .zvs-item { border-top-color: var(--zvs-own-row); }
+.zvs:not(.zvs--light) .zvs-side--own:hover .zvs-item { border-top-color: rgba(11, 11, 11, .12); }
+.zvs-item:last-child { padding-bottom: 0; }
+
+.zvs-mark {
+    width: 16px;
+    height: 16px;
+    margin-top: 4px;
+    fill: none;
+    stroke: var(--zvs-them-mark);
+    stroke-width: 1.5;
+    stroke-linecap: round;
 }
 
-.zvs-n {
+.zvs-side--own .zvs-mark { stroke: var(--zvs-own-mark); }
+
+/* .service-offer-title + .service-offer-text */
+.zvs-item-title {
     font-family: Inter, sans-serif;
-    font-size: 18px;
-    line-height: 28px;
-    color: var(--zvs-muted);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    color: inherit;
 }
 
-.zvs-topic {
-    font-size: 18px;
-    line-height: 28px;
-    font-weight: 500;
-    color: var(--zvs-ink);
-}
-
-.zvs-pair {
-    display: contents;
-}
-
-/* the side names are read by screen readers; on phones they are shown */
-.zvs-pair dt {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-}
-
-.zvs-pair dd {
+.zvs-item-text {
+    margin-top: 4px;
     font-family: Inter, sans-serif;
     font-size: 14px;
-    line-height: 24px;
-    color: var(--zvs-muted);
+    line-height: 21px;
+    color: var(--zvs-them-text);
 }
+
+.zvs-side--own .zvs-item-text { color: var(--zvs-own-text); }
 
 .zvs-nw {
     white-space: nowrap;
 }
 
-.zvs-pair dd.is-own {
-    color: var(--zvs-ink);
-}
-
-.zvs-row:hover .zvs-n,
-.zvs-row:hover .zvs-pair dd { color: var(--zvs-hover-ink-2); }
-.zvs-row:hover .zvs-topic,
-.zvs-row:hover .zvs-pair dd.is-own { color: var(--zvs-hover-ink); }
-
 .zvs-note {
     margin-top: 24px;
-    padding: 0 24px;
     font-family: Inter, sans-serif;
     font-size: 14px;
     line-height: 20px;
@@ -315,14 +412,6 @@
 }
 
 /* ── Responsive ─────────────────────────────────────── */
-
-@media (max-width: 1200px) {
-    .zvs-cols,
-    .zvs-row {
-        grid-template-columns: 40px minmax(0, 200px) minmax(0, 1fr) minmax(0, 1fr);
-        column-gap: 32px;
-    }
-}
 
 @media (max-width: 991px) {
     .zvs { --zvs-gutter: 40px; }
@@ -340,47 +429,31 @@
     .zvs-num { font-size: 40px; line-height: 48px; }
     .zvs-num em { font-size: 30px; }
 
-    /* one row = number and topic on top, the pair side by side under them */
-    .zvs-cols { display: none; }
-
-    .zvs-row {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        column-gap: 24px;
-        row-gap: 16px;
-        align-items: start;
-        padding: 24px 16px;
-    }
-
-    .zvs-n,
-    .zvs-topic { grid-column: 1 / -1; }
-    .zvs-n { margin-bottom: -12px; font-size: 14px; line-height: 20px; }
-
-    .zvs-pair dt {
-        position: static;
-        width: auto;
-        height: auto;
-        overflow: visible;
-        clip: auto;
-        margin-bottom: 6px;
-        font-family: Inter, sans-serif;
-        font-size: 12px;
-        line-height: 18px;
-        letter-spacing: 0.48px;
-        text-transform: uppercase;
-        color: var(--zvs-muted);
-    }
-
-    .zvs-pair dt.is-own { color: var(--zvs-eyebrow); }
-    .zvs-pair > div { min-width: 0; }
-    .zvs-row:hover .zvs-pair dt { color: var(--zvs-hover-ink-2); }
-
-    .zvs-note { padding: 0 16px; }
+    .zvs-side { padding: 24px; }
+    .zvs-icon { margin-bottom: 32px; }
 }
 
+/* one list above the other: the platform first, your site under it */
 @media (max-width: 767px) {
-    .zvs-stats { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .zvs-stats { grid-template-columns: minmax(0, 1fr); }
     .zvs-stat { min-height: 0; gap: 32px; }
     .zvs-stat--hero { min-height: 220px; }
+
+    .zvs-board {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: none;
+    }
+
+    .zvs-side,
+    .zvs-list {
+        display: block;
+        grid-row: auto;
+    }
+
+    .zvs-side--own {
+        border-left: 0;
+        border-top: 1px solid var(--zvs-grid-line);
+    }
 }
 
 @media (max-width: 575px) {
@@ -395,13 +468,13 @@
     }
 
     .zvs-desc { font-size: 14px; line-height: 20px; }
-    .zvs-stats { margin-bottom: 32px; }
 
-    .zvs-row {
-        grid-template-columns: minmax(0, 1fr);
-        row-gap: 12px;
-        padding: 24px 16px;
-    }
+    .zvs-side { padding: 20px; }
+    .zvs-side-title { font-size: 18px; line-height: 28px; }
+    .zvs-item { column-gap: 12px; padding: 16px 0; }
+    .zvs-item-title { font-size: 15px; line-height: 22px; }
+}
 
-    .zvs-pair dd { font-size: 14px; line-height: 20px; }
+@media (prefers-reduced-motion: reduce) {
+    .zvs-side--them::before { transition: none; }
 }

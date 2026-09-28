@@ -1,7 +1,7 @@
 # ZeeFrames — "Platform vs your own site"
 
-A drop-in comparison section for zeeframes.com: three stats and five numbered rows
-"platform / your own site". Live demo:
+A drop-in comparison section for zeeframes.com: three stats and two lists side by side —
+five minuses of renting a place on a platform and five pluses of your own site. Live demo:
 https://semenovmak111-create.github.io/zeeframes-vs/
 (`?theme=light` shows the cream variant).
 
@@ -24,15 +24,16 @@ The side gutter can be overridden with `--zvs-gutter` (60 / 40 / 24 px by defaul
 - Stat cards of the /about hero (`.about-card-common`, `.hero-counter`): 48 px number,
   the unit in lime at 36 px weight 300; the "0 ₽" card carries the lime glow of the
   "10+ years" card and the dark label chip.
-- Numbered rows of "Six reasons why 90% of our clients come back" on /about
-  (`.value-item`): number / title / muted text, 0.6 px hairlines, the whole row turns
-  lime on hover — exactly as on /about.
+- The "What's included" bento of the service pages (`.services-offer-grid`): the platform
+  is a dark cell (lime glow from the corner on hover), your site the white CTA cell
+  (`.service-offer-cta`, turns lime on hover), each with a 44 px `.card-icon`.
+  In the cream variant the platform is white and your site is the black CTA cell of Process.
+- List rows are FAQ rows: hairline on top, the FAQ's own 16 px minus / plus icons.
+  Point N of the platform stands level with point N of the site (CSS subgrid).
 
 ## Behaviour and accessibility
 
-- Rows are an `<ol>`; each pair is a `<dl>` with "Площадка" / "Свой сайт" terms.
-  On desktop the terms are visually hidden (the column header says it); below 992 px
-  they are shown above each text, so a pair never splits.
-- 992 px and below: stats stay in three columns, each row shows the pair side by side.
-  Below 768 px stats stack; below 576 px the pair stacks, platform first.
-- Nothing moves, so there is nothing to switch off for `prefers-reduced-motion`.
+- Each side is a `<section>` with its own heading and a `<ul>` labelled
+  "Минусы площадки" / "Плюсы своего сайта".
+- Below 768 px the lists stack: platform first, your site under it; stats stack too.
+- The only motion is the 0.3 s glow on hover; it is off under `prefers-reduced-motion`.

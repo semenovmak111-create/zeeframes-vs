@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500&family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="vs.css?v=1">
+    <link rel="stylesheet" href="vs.css?v=2">
     <style>html, body { margin: 0; background: #0B0B0B; }</style>
 </head>
 <body>
@@ -48,53 +48,66 @@
             </li>
         </ul>
 
-        <div class="zvs-cols" aria-hidden="true">
-            <span><span class="zvs-col-label">Площадка</span><span class="zvs-col-title">Вы снимаете место</span></span>
-            <span class="is-own"><span class="zvs-col-label">Свой сайт</span><span class="zvs-col-title">Вы владеете адресом</span></span>
+        <div class="zvs-board">
+            <section class="zvs-side zvs-side--them" aria-labelledby="zvs-them">
+                <header class="zvs-side-head">
+                    <span class="zvs-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9"/><path d="M3 10l1.6-5.2A1 1 0 0 1 5.6 4h12.8a1 1 0 0 1 1 .8L21 10"/><path d="M3 10a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M10 20v-5h4v5"/></svg></span>
+                    <p class="zvs-label">Площадка</p>
+                    <h3 class="zvs-side-title" id="zvs-them">Вы снимаете место</h3>
+                </header>
+                <ul class="zvs-list" aria-label="Минусы площадки">
+                    <li class="zvs-item">
+                        <svg class="zvs-mark" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.667 8h10.666"/></svg>
+                        <div><h4 class="zvs-item-title">Место в списке — пока платите</h4><p class="zvs-item-text"><span class="zvs-nw">3&nbsp;000–30&nbsp;000&nbsp;₽</span> в&nbsp;месяц за приоритет. Перестали — карточка уходит вниз.</p></div>
+                    </li>
+                    <li class="zvs-item">
+                        <svg class="zvs-mark" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.667 8h10.666"/></svg>
+                        <div><h4 class="zvs-item-title">Процент с каждой записи</h4><p class="zvs-item-text">Портал берёт 3,7% — даже когда клиент пришёл второй раз.</p></div>
+                    </li>
+                    <li class="zvs-item">
+                        <svg class="zvs-mark" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.667 8h10.666"/></svg>
+                        <div><h4 class="zvs-item-title">Контакты клиента — у площадки</h4><p class="zvs-item-text">Позвать его на осмотр через полгода вы не сможете.</p></div>
+                    </li>
+                    <li class="zvs-item">
+                        <svg class="zvs-mark" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.667 8h10.666"/></svg>
+                        <div><h4 class="zvs-item-title">Рядом — другие клиники</h4><p class="zvs-item-text">Площадка показывает их прямо в вашей карточке.</p></div>
+                    </li>
+                    <li class="zvs-item">
+                        <svg class="zvs-mark" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.667 8h10.666"/></svg>
+                        <div><h4 class="zvs-item-title">Правила пишет площадка</h4><p class="zvs-item-text">Какие отзывы показать и кого поднять выше, решает её алгоритм.</p></div>
+                    </li>
+                </ul>
+            </section>
+            <section class="zvs-side zvs-side--own" aria-labelledby="zvs-own">
+                <header class="zvs-side-head">
+                    <span class="zvs-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg></span>
+                    <p class="zvs-label">Свой сайт</p>
+                    <h3 class="zvs-side-title" id="zvs-own">Вы владеете адресом</h3>
+                </header>
+                <ul class="zvs-list" aria-label="Плюсы своего сайта">
+                    <li class="zvs-item">
+                        <svg class="zvs-mark" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.667v10.666"/><path d="M2.667 8h10.666"/></svg>
+                        <div><h4 class="zvs-item-title">Адрес ваш, пока работает клиника</h4><p class="zvs-item-text">Домен и хостинг — несколько тысяч ₽ в&nbsp;год. Снять с&nbsp;показа не может никто.</p></div>
+                    </li>
+                    <li class="zvs-item">
+                        <svg class="zvs-mark" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.667v10.666"/><path d="M2.667 8h10.666"/></svg>
+                        <div><h4 class="zvs-item-title">Запись без комиссии</h4><p class="zvs-item-text">0&nbsp;₽ с первой, сотой и повторной заявки.</p></div>
+                    </li>
+                    <li class="zvs-item">
+                        <svg class="zvs-mark" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.667v10.666"/><path d="M2.667 8h10.666"/></svg>
+                        <div><h4 class="zvs-item-title">Клиент возвращается к вам</h4><p class="zvs-item-text">Его номер остаётся у вас: напомните об осмотре или расскажите об акции.</p></div>
+                    </li>
+                    <li class="zvs-item">
+                        <svg class="zvs-mark" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.667v10.666"/><path d="M2.667 8h10.666"/></svg>
+                        <div><h4 class="zvs-item-title">На странице — только вы</h4><p class="zvs-item-text">Ни чужих клиник, ни чужой рекламы. Выбирают между вашими врачами.</p></div>
+                    </li>
+                    <li class="zvs-item">
+                        <svg class="zvs-mark" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.667v10.666"/><path d="M2.667 8h10.666"/></svg>
+                        <div><h4 class="zvs-item-title">Правила пишете вы</h4><p class="zvs-item-text">Врачи, цены, отзывы, акции — решаете сами. Сменится подрядчик — сайт останется.</p></div>
+                    </li>
+                </ul>
+            </section>
         </div>
-
-        <ol class="zvs-rows">
-            <li class="zvs-row">
-                <span class="zvs-n" aria-hidden="true">01</span>
-                <h3 class="zvs-topic">Место в поиске</h3>
-                <dl class="zvs-pair">
-                    <div><dt>Площадка</dt><dd>Место в списке — пока платите: <span class="zvs-nw">3&nbsp;000–30&nbsp;000&nbsp;₽</span> в&nbsp;месяц за приоритет. Перестали — карточка уходит вниз.</dd></div>
-                    <div><dt class="is-own">Свой сайт</dt><dd class="is-own">Адрес ваш, пока работает клиника. Домен и хостинг — несколько тысяч ₽ в&nbsp;год, снять с&nbsp;показа не может никто.</dd></div>
-                </dl>
-            </li>
-            <li class="zvs-row">
-                <span class="zvs-n" aria-hidden="true">02</span>
-                <h3 class="zvs-topic">Комиссия с записи</h3>
-                <dl class="zvs-pair">
-                    <div><dt>Площадка</dt><dd>Портал берёт 3,7% с каждой записи — даже когда клиент пришёл второй раз.</dd></div>
-                    <div><dt class="is-own">Свой сайт</dt><dd class="is-own">0&nbsp;₽ с первой, сотой и повторной заявки.</dd></div>
-                </dl>
-            </li>
-            <li class="zvs-row">
-                <span class="zvs-n" aria-hidden="true">03</span>
-                <h3 class="zvs-topic">Контакты клиента</h3>
-                <dl class="zvs-pair">
-                    <div><dt>Площадка</dt><dd>Номер остаётся у площадки. Позвать клиента на осмотр через полгода вы не сможете.</dd></div>
-                    <div><dt class="is-own">Свой сайт</dt><dd class="is-own">Номер остаётся у вас. Напомните об осмотре или расскажите об акции — и клиент вернётся именно к вам.</dd></div>
-                </dl>
-            </li>
-            <li class="zvs-row">
-                <span class="zvs-n" aria-hidden="true">04</span>
-                <h3 class="zvs-topic">Кто рядом</h3>
-                <dl class="zvs-pair">
-                    <div><dt>Площадка</dt><dd>Другие клиники — прямо в вашей карточке.</dd></div>
-                    <div><dt class="is-own">Свой сайт</dt><dd class="is-own">Только вы: ни чужих клиник, ни чужой рекламы. Выбирают между вашими врачами.</dd></div>
-                </dl>
-            </li>
-            <li class="zvs-row">
-                <span class="zvs-n" aria-hidden="true">05</span>
-                <h3 class="zvs-topic">Кто пишет правила</h3>
-                <dl class="zvs-pair">
-                    <div><dt>Площадка</dt><dd>Какие отзывы показать и кого поднять выше, решает её алгоритм.</dd></div>
-                    <div><dt class="is-own">Свой сайт</dt><dd class="is-own">Врачи, цены, отзывы, акции — решаете вы. Сменится подрядчик — сайт останется.</dd></div>
-                </dl>
-            </li>
-        </ol>
 
         <p class="zvs-note">Тарифы — из открытых прайсов площадок, сентябрь 2026.</p>
 
